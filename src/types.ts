@@ -1,8 +1,8 @@
 export type User = { id: string; email: string; name?: string; role: 'owner' | 'employee' }
-export type AccountProvider = 'whatsapp' | 'telegram'
+export type AccountProvider = 'whatsapp' | 'telegram' | 'telegram_userbot'
 export type Account = { id: string; name: string; provider?: AccountProvider; phone?: string; status: 'connected' | 'connecting' | 'reconnecting' | 'disconnected'; sync_limited?: boolean }
 export type Conversation = { id: string; account_id: string; contact_name: string; contact_phone?: string; contact_avatar_url?: string; avatar?: string; last_message?: string; last_message_at?: string; unread_count?: number; status: 'resolved' | 'unresolved' }
-export type Message = { id: string; content?: string; body?: string; sender?: 'contact' | 'user'; direction?: 'incoming' | 'outgoing'; outgoing?: boolean; created_at?: string; timestamp?: string; status?: 'sending' | 'pending' | 'sent' | 'received' | 'delivered' | 'read' | 'failed'; sender_name?: string; media_type?: 'image' | 'sticker' | string; media_url?: string; media_mime?: string; local?: boolean; localFile?: File; conversation_id?: string }
+export type Message = { id: string; content?: string; body?: string; sender?: 'contact' | 'user'; direction?: 'incoming' | 'outgoing'; outgoing?: boolean; created_at?: string; timestamp?: string; status?: 'sending' | 'pending' | 'sent' | 'received' | 'delivered' | 'read' | 'failed'; sender_name?: string; media_type?: 'image' | 'sticker' | 'document' | 'video' | 'audio' | string; media_url?: string; media_mime?: string; media_name?: string; local?: boolean; localFile?: File; conversation_id?: string }
 export type SlashCommand = { id: string; name: string; content: string; response?: string }
 export type Employee = { id: string; email: string; name?: string; created_at?: string }
 export type S3Settings = { access_key: string; secret_key_set: boolean; secret_key_hint: string; endpoint: string; public_url: string; bucket: string; folder: string; region: string }

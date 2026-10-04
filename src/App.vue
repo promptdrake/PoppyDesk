@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import { RouterLink, RouterView, useRouter } from 'vue-router'
-import { Inbox, MessageSquareText, Smartphone, Users, LogOut, WifiOff, Menu, X, Settings } from 'lucide-vue-next'
+import { Inbox, MessageSquareText, Smartphone, Users, LogOut, WifiOff, Menu, X, Settings, Clock, Bot, Key } from 'lucide-vue-next'
 import { session, setUser } from './session'
 import { api } from './api'
 
@@ -33,7 +33,11 @@ async function logout() {
         <RouterLink to="/commands"><MessageSquareText /> <span>Quick replies</span></RouterLink>
         <RouterLink v-if="session.user?.role === 'owner'" to="/accounts"><Smartphone /> <span>Channels</span></RouterLink>
         <RouterLink v-if="session.user?.role === 'owner'" to="/team"><Users /> <span>Team</span></RouterLink>
-        <RouterLink v-if="session.user?.role === 'owner'" to="/settings"><Settings /> <span>Settings</span></RouterLink>
+        <RouterLink v-if="session.user?.role === 'owner'" to="/settings"><Settings /> <span>Storage Settings</span></RouterLink>
+        <RouterLink v-if="session.user?.role === 'owner'" to="/settings/work-hours"><Clock /> <span>Work Hours</span></RouterLink>
+        <RouterLink v-if="session.user?.role === 'owner'" to="/settings/auto-replies"><MessageSquareText /> <span>Auto Replies</span></RouterLink>
+        <RouterLink v-if="session.user?.role === 'owner'" to="/settings/ai"><Bot /> <span>AI Responder</span></RouterLink>
+        <RouterLink v-if="session.user?.role === 'owner'" to="/settings/api-keys"><Key /> <span>API Keys</span></RouterLink>
       </nav>
       <button class="logout" @click="logout"><LogOut /> <span>Sign out</span></button>
     </aside>
