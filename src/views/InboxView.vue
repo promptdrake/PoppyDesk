@@ -380,8 +380,11 @@ function insertCommand(command: SlashCommand) { draft.value = command.content ||
 function onDraft() { suggestionsOpen.value = draft.value.startsWith('/') }
 async function scrollBottom() { await nextTick(); threadEl.value?.scrollTo({ top: threadEl.value.scrollHeight, behavior: 'smooth' }) }
 function connectSocket() {
-  const protocol = location.protocol === 'https:' ? 'wss:' : 'ws:'
-  socket = new WebSocket(`${protocol}//${location.host}/api/ws`)
+  const wsUrl = import.meta.env.PROD 
+    ? 'wss://poppydesk-be.aisbirnusantara.com/api/ws' 
+    : (location.protocol === 'https:' ? `wss://${location.host}/api/ws` : `ws://${location.host}/api/ws`)
+  
+  socket = new WebSocket(wsUrl)
   socket.onopen = () => wsOnline.value = true
   socket.onclose = () => { wsOnline.value = false }
   socket.onerror = () => wsOnline.value = false
