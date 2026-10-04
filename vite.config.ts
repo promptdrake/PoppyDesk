@@ -11,6 +11,9 @@ export default defineConfig(({ mode }) => {
       })
     ],
     server: {
+      hmr: {
+        clientPort: 443,
+      },
       proxy: {
         '/api/ws': { target, ws: true },
         '/api': { target, changeOrigin: true },
