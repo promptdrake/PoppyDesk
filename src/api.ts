@@ -8,7 +8,8 @@ export async function api<T>(path: string, options: RequestInit = {}): Promise<T
   if (options.body && !(options.body instanceof FormData)) headers.set('Content-Type', 'application/json')
   let response: Response
   try {
-    response = await fetch(`/api${path}`, { credentials: 'include', ...options, headers })
+    const baseUrl = import.meta.env.PROD ? 'https://poppydesk-be.aisbirnusantara.com' : ''
+    response = await fetch(`${baseUrl}/api${path}`, { credentials: 'include', ...options, headers })
   } catch {
     throw new ApiError('Cannot reach the server. Check your connection and try again.', 0)
   }
