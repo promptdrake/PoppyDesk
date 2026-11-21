@@ -11,9 +11,17 @@ node_modules
 dist
 dist-ssr
 *.local
+*.tsbuildinfo
+coverage
+
+# Environment
 .env
 .env.*
 !.env.example
+
+# Hosting
+.vercel
+.netlify
 
 # Editor directories and files
 .vscode/*
