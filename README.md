@@ -72,7 +72,3 @@ Use static hosting only if you also terminate the WebSocket and API on the site'
 - `src/api.ts` — fetch client for the backend API
 - `src/session.ts` — session bootstrap and auth state
 - `src/router.ts` — routes and role guards
-
-## Status
-
-backendnya blm jd mls bgt tpi prjctnya ntr jdi kok
