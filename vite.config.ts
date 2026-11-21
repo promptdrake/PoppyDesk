@@ -15,7 +15,13 @@ export default defineConfig(({ mode }) => {
         clientPort: 443,
       },
       proxy: {
-        '/api/ws': { target, ws: true },
+        '/api/ws': {
+          target,
+          ws: true,
+          configure: (proxy) => {
+            proxy.on('proxyReqWs', (proxyReq) => proxyReq.removeHeader('origin'))
+          },
+        },
         '/api': { target, changeOrigin: true },
       },
     },
